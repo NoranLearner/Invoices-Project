@@ -10,8 +10,8 @@
 				<div class="breadcrumb-header justify-content-between">
 					<div class="left-content">
 						<div>
-						  <h2 class="main-content-title tx-24 mg-b-1 mg-b-lg-1">Hi, welcome back!</h2>
-						  <p class="mg-b-0">Sales monitoring dashboard template.</p>
+						<h2 class="main-content-title tx-24 mg-b-1 mg-b-lg-1">Hi, welcome back!</h2>
+						<p class="mg-b-0">Sales monitoring dashboard template.</p>
 						</div>
 					</div>
 					<div class="main-dashboard-header-right">
@@ -141,18 +141,18 @@
 							<div class="card-body">
 								<div class="total-revenue">
 									<div>
-									  <h4>120,750</h4>
-									  <label><span class="bg-primary"></span>success</label>
+									<h4>120,750</h4>
+									<label><span class="bg-primary"></span>success</label>
 									</div>
 									<div>
-									  <h4>56,108</h4>
-									  <label><span class="bg-danger"></span>Pending</label>
+									<h4>56,108</h4>
+									<label><span class="bg-danger"></span>Pending</label>
 									</div>
 									<div>
-									  <h4>32,895</h4>
-									  <label><span class="bg-warning"></span>Failed</label>
+									<h4>32,895</h4>
+								    <label><span class="bg-warning"></span>Failed</label>
 									</div>
-								  </div>
+								</div>
 								<div id="bar" class="sales-bar mt-4"></div>
 							</div>
 						</div>
@@ -459,5 +459,5 @@
 <script src="{{URL::asset('assets/js/modal-popup.js')}}"></script>
 <!--Internal  index js -->
 <script src="{{URL::asset('assets/js/index.js')}}"></script>
-<script src="{{URL::asset('assets/js/jquery.vmap.sampledata.js')}}"></script>	
+<script src="{{URL::asset('assets/js/jquery.vmap.sampledata.js')}}"></script>
 @endsection
