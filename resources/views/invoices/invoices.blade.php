@@ -30,7 +30,7 @@
 @section('content')
 
 <!-- row -->
-<div class="row row-sm">
+<div class="row">
 
     <!--div-->
     <div class="col-xl-12">
