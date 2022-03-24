@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\InvoicesController;
 use App\Http\Controllers\AdminController;
 
 /*
@@ -23,6 +25,8 @@ Auth::routes();
 
 // Auth::routes(['register' => false]);
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+
+Route::get('/invoices', [InvoicesController::class, 'index']);
 
 Route::get('/{page}', [AdminController::class, 'index']);

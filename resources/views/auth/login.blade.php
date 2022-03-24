@@ -2,7 +2,7 @@
 @extends('layouts.master2')
 
 @section('title')
-    تسجيل الدخول - مورا سوفت للادارة القانونية
+    تسجيل الدخول
 @stop
 
 @section('css')
@@ -106,8 +106,8 @@
                                             <img src="{{URL::asset('assets/img/brand/favicon.png')}}" class="sign-favicon ht-40" alt="logo">
                                         </a>
                                         <h1 class="main-logo1 ml-1 mr-0 my-auto tx-28">
-                                            Mora
-                                            <span>Soft</span>
+                                            برنامج
+                                            <span>الفواتير</span>
                                         </h1>
                                     </div>
 
