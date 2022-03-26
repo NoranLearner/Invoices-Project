@@ -75,7 +75,7 @@ class SectionsController extends Controller
         );
         session()->flash('Add', 'تم اضافة القسم بنجاح ');
         return redirect('/sections');
-        
+
     }
 
     /**

@@ -41,7 +41,7 @@
 @endif
 
 {{-- For First Code --}}
-{{-- 
+{{--
 @if (session()->has('Error'))
     <div class="alert alert-danger alert-dismissible fade show" role="alert">
         <strong>{{ session()->get('Error') }}</strong>
@@ -101,7 +101,7 @@
             <div class="card-body">
                 <div class="table-responsive">
                     <!-- example , example1 -->
-                    <table id="example1" class="table key-buttons text-md-nowrap">
+                    <table id="example1" class="table key-buttons text-md-nowrap" data-page-length='50'>
                         <thead>
                             <tr>
                                 <th class="border-bottom-0">#</th>
@@ -111,22 +111,22 @@
                             </tr>
                         </thead>
                         <tbody>
-                            {{-- <?php $i = 0 ?> --}}
+                            <!-- <?php $i = 0 ?> -->
                             @foreach ($sections as $x)
-                            {{-- <?php $i++ ?> --}}
+                            <!-- <?php $i++ ?> -->
                                 <tr>
-                                    {{-- <td>{{ $i }}</td> --}}
+                                    <!-- <td>{{ $i }}</td> -->
                                     <td>{{ $x -> id }}</td>
                                     <td>{{ $x -> section_name }}</td>
                                     <td>{{ $x -> description }}</td>
                                     <td>
                                         <a class="modal-effect btn btn-sm btn-info" data-effect="effect-scale"
                                             data-id="{{ $x->id }}" data-section_name="{{ $x->section_name }}"
-                                            data-description="{{ $x->description }}" 
+                                            data-description="{{ $x->description }}"
                                             data-toggle="modal" href="#exampleModal2" title="تعديل">
                                             <i class="las la-pen"></i>
                                         </a>
-                                    
+
                                         <a class="modal-effect btn btn-sm btn-danger" data-effect="effect-scale"
                                             data-id="{{ $x->id }}" data-section_name="{{ $x->section_name }}"
                                             data-toggle="modal" href="#modaldemo9" title="حذف">
@@ -156,17 +156,17 @@
 					<div class="modal-body">
 						<form action="{{ route('sections.store') }}" method="post">
                             {{ csrf_field() }}
-    
+
                             <div class="form-group">
                                 <label for="exampleInputEmail1">اسم القسم</label>
                                 <input type="text" class="form-control" id="section_name" name="section_name">
                             </div>
-    
+
                             <div class="form-group">
-                                <label for="exampleFormControlTextarea1">ملاحظات</label>
+                                <label for="exampleFormControlTextarea1">الوصف</label>
                                 <textarea class="form-control" id="description" name="description" rows="3"></textarea>
                             </div>
-    
+
                             <div class="modal-footer">
                                 <button type="submit" class="btn ripple btn-success">حفظ</button>
                                 <button type="button" class="btn ripple btn-secondary" data-dismiss="modal">اغلاق</button>
@@ -176,9 +176,9 @@
 				</div>
 			</div>
 		</div>
-		<!-- End Basic modal -->
+	<!-- End Basic modal -->
 
-        <!-- Edit modal-->
+    <!-- Edit modal-->
         <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -210,9 +210,9 @@
                 </div>
             </div>
         </div>
-        <!-- End Edit modal-->
+    <!-- End Edit modal-->
 
-        <!-- Delete modal -->
+    <!-- Delete modal -->
         <div class="modal" id="modaldemo9">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content modal-content-demo">
@@ -238,7 +238,7 @@
                 </div>
             </div>
         </div>
-        <!-- End Delete modal-->
+    <!-- End Delete modal-->
 
 </div>
 <!-- /row -->
