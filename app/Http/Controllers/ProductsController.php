@@ -17,7 +17,7 @@ class ProductsController extends Controller
     {
         $sections = sections::all();
         $products = products::all();
-        return view('products.products', compact('sections','products'));
+        return view('products.products', compact('sections', 'products'));
     }
 
     /**
@@ -40,14 +40,14 @@ class ProductsController extends Controller
     {
         $validatedData = $request->validate(
             [
-            'product_name' => 'required|unique:products|max:255',
-            'section_id' => 'required',
-            'description' => 'required',
-            ],[
-            'product_name.required' =>'يرجي ادخال اسم المنتج',
-            'product_name.unique' =>'اسم المنتج مسجل مسبقا',
-            'section_id.required' => 'يرجى ادخال القسم',
-            'description.required' =>'يرجي ادخال الوصف',
+                'product_name' => 'required|max:255',
+                'section_id' => 'required',
+                'description' => 'required',
+            ],
+            [
+                'product_name.required' => 'يرجي ادخال اسم المنتج',
+                'section_id.required' => 'يرجى ادخال القسم',
+                'description.required' => 'يرجي ادخال الوصف',
             ]
         );
 
@@ -91,7 +91,30 @@ class ProductsController extends Controller
      */
     public function update(Request $request, products $products)
     {
-        //
+        $pro_id = $request->pro_id;
+
+        $this->validate($request, [
+            'product_name' => 'required|max:255'.$pro_id,
+            'section_name' => 'required',
+            'description' => 'required',
+        ],[
+            'product_name.required' => 'يرجي ادخال اسم المنتج',
+            'section_name.required' => 'يرجى ادخال القسم',
+            'description.required' => 'يرجي ادخال الوصف',
+        ]);
+
+        $id = sections::where('section_name', $request->section_name)->first()->id;
+
+        $products = products::findOrFail($pro_id);
+
+        $products->update([
+            'product_name' => $request->product_name,
+            'description' => $request->description,
+            'section_id' => $id,
+        ]);
+
+        session()->flash('edit', 'تم تعديل المنتج بنجاح');
+        return back();
     }
 
     /**
@@ -100,8 +123,12 @@ class ProductsController extends Controller
      * @param  \App\Models\products  $products
      * @return \Illuminate\Http\Response
      */
-    public function destroy(products $products)
+    public function destroy(Request $request)
     {
-        //
+        $pro_id = $request->pro_id;
+        $products = products::findOrFail($pro_id);
+        $products->delete();
+        session()->flash('delete', 'تم حذف المنتج بنجاح');
+        return back();
     }
 }

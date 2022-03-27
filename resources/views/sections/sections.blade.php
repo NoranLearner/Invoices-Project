@@ -113,7 +113,7 @@
                         <tbody>
                             <!-- <?php $i = 0 ?> -->
                             @foreach ($sections as $x)
-                            <!-- <?php $i++ ?> -->
+                                <!-- <?php $i++ ?> -->
                                 <tr>
                                     <!-- <td>{{ $i }}</td> -->
                                     <td>{{ $x -> id }}</td>
