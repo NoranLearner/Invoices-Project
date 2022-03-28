@@ -38,7 +38,12 @@
             <div class="card-header pb-0">
                 <div class="d-flex justify-content-between">
                     <h4 class="card-title mg-b-0">قائمة الفواتير</h4>
-                    {{-- <i class="mdi mdi-dots-horizontal text-gray"></i> --}}
+                    <!-- Basic modal -->
+                    <div class="col-sm-6 col-md-4 col-xl-3">
+                        <a class="btn btn-outline-primary btn-block" href="invoices/create">
+                            <i class="fas fa-plus"></i>&nbsp; اضافة فاتورة
+                        </a>
+                    </div>
                 </div>
             </div>
             <div class="card-body">
@@ -138,186 +143,6 @@
                                 <td>لم يتم السداد</td>
                                 <td>دفع</td>
                             </tr>
-                            <tr>
-                                <td>6</td>
-                                <td>25251515</td>
-                                <td>24-3-2022</td>
-                                <td>1-4-2022</td>
-                                <td>منتج</td>
-                                <td>البنك الاهلى</td>
-                                <td>40%</td>
-                                <td>2400</td>
-                                <td>2000</td>
-                                <td>4400</td>
-                                <td>غير مدفوعه</td>
-                                <td>لم يتم السداد</td>
-                                <td>دفع</td>
-                            </tr>
-                            <tr>
-                                <td>7</td>
-                                <td>25251515</td>
-                                <td>24-3-2022</td>
-                                <td>1-4-2022</td>
-                                <td>منتج</td>
-                                <td>البنك الاهلى</td>
-                                <td>40%</td>
-                                <td>2400</td>
-                                <td>2000</td>
-                                <td>4400</td>
-                                <td>غير مدفوعه</td>
-                                <td>لم يتم السداد</td>
-                                <td>دفع</td>
-                            </tr>
-                            <tr>
-                                <td>8</td>
-                                <td>25251515</td>
-                                <td>24-3-2022</td>
-                                <td>1-4-2022</td>
-                                <td>منتج</td>
-                                <td>البنك الاهلى</td>
-                                <td>40%</td>
-                                <td>2400</td>
-                                <td>2000</td>
-                                <td>4400</td>
-                                <td>غير مدفوعه</td>
-                                <td>لم يتم السداد</td>
-                                <td>دفع</td>
-                            </tr>
-                            <tr>
-                                <td>9</td>
-                                <td>25251515</td>
-                                <td>24-3-2022</td>
-                                <td>1-4-2022</td>
-                                <td>منتج</td>
-                                <td>البنك الاهلى</td>
-                                <td>40%</td>
-                                <td>2400</td>
-                                <td>2000</td>
-                                <td>4400</td>
-                                <td>غير مدفوعه</td>
-                                <td>لم يتم السداد</td>
-                                <td>دفع</td>
-                            </tr>
-                            <tr>
-                                <td>10</td>
-                                <td>25251515</td>
-                                <td>24-3-2022</td>
-                                <td>1-4-2022</td>
-                                <td>منتج</td>
-                                <td>البنك الاهلى</td>
-                                <td>40%</td>
-                                <td>2400</td>
-                                <td>2000</td>
-                                <td>4400</td>
-                                <td>غير مدفوعه</td>
-                                <td>لم يتم السداد</td>
-                                <td>دفع</td>
-                            </tr>
-                            <tr>
-                                <td>11</td>
-                                <td>25251515</td>
-                                <td>24-3-2022</td>
-                                <td>1-4-2022</td>
-                                <td>منتج</td>
-                                <td>البنك الاهلى</td>
-                                <td>40%</td>
-                                <td>2400</td>
-                                <td>2000</td>
-                                <td>4400</td>
-                                <td>غير مدفوعه</td>
-                                <td>لم يتم السداد</td>
-                                <td>دفع</td>
-                            </tr>
-                            <tr>
-                                <td>12</td>
-                                <td>25251515</td>
-                                <td>24-3-2022</td>
-                                <td>1-4-2022</td>
-                                <td>منتج</td>
-                                <td>البنك الاهلى</td>
-                                <td>40%</td>
-                                <td>2400</td>
-                                <td>2000</td>
-                                <td>4400</td>
-                                <td>غير مدفوعه</td>
-                                <td>لم يتم السداد</td>
-                                <td>دفع</td>
-                            </tr>
-                            <tr>
-                                <td>13</td>
-                                <td>25251515</td>
-                                <td>24-3-2022</td>
-                                <td>1-4-2022</td>
-                                <td>منتج</td>
-                                <td>البنك الاهلى</td>
-                                <td>40%</td>
-                                <td>2400</td>
-                                <td>2000</td>
-                                <td>4400</td>
-                                <td>غير مدفوعه</td>
-                                <td>لم يتم السداد</td>
-                                <td>دفع</td>
-                            </tr>
-                            <tr>
-                                <td>14</td>
-                                <td>25251515</td>
-                                <td>24-3-2022</td>
-                                <td>1-4-2022</td>
-                                <td>منتج</td>
-                                <td>البنك الاهلى</td>
-                                <td>40%</td>
-                                <td>2400</td>
-                                <td>2000</td>
-                                <td>4400</td>
-                                <td>غير مدفوعه</td>
-                                <td>لم يتم السداد</td>
-                                <td>دفع</td>
-                            </tr>
-                            <tr>
-                                <td>15</td>
-                                <td>25251515</td>
-                                <td>24-3-2022</td>
-                                <td>1-4-2022</td>
-                                <td>منتج</td>
-                                <td>البنك الاهلى</td>
-                                <td>40%</td>
-                                <td>2400</td>
-                                <td>2000</td>
-                                <td>4400</td>
-                                <td>غير مدفوعه</td>
-                                <td>لم يتم السداد</td>
-                                <td>دفع</td>
-                            </tr>
-                            <tr>
-                                <td>16</td>
-                                <td>25251515</td>
-                                <td>24-3-2022</td>
-                                <td>1-4-2022</td>
-                                <td>منتج</td>
-                                <td>البنك الاهلى</td>
-                                <td>40%</td>
-                                <td>2400</td>
-                                <td>2000</td>
-                                <td>4400</td>
-                                <td>غير مدفوعه</td>
-                                <td>لم يتم السداد</td>
-                                <td>دفع</td>
-                            </tr>
-                            <tr>
-                                <td>17</td>
-                                <td>25251515</td>
-                                <td>24-3-2022</td>
-                                <td>1-4-2022</td>
-                                <td>منتج</td>
-                                <td>البنك الاهلى</td>
-                                <td>40%</td>
-                                <td>2400</td>
-                                <td>2000</td>
-                                <td>4400</td>
-                                <td>غير مدفوعه</td>
-                                <td>لم يتم السداد</td>
-                                <td>دفع</td>
-                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -328,61 +153,12 @@
 
 </div>
 <!-- /row -->
+<!-- row closed -->
 
-				{{-- <!-- row -->
-				<div class="row row-sm">
-					<div class="col-md-6">
-						<div class="card mg-b-20">
-							<div class="card-body">
-								<div class="main-content-label mg-b-5">
-									Bar Chart
-								</div>
-								<p class="mg-b-20">Basic Charts Of Valex template.</p>
-								<div class="morris-wrapper-demo" id="morrisBar1"></div>
-							</div>
-						</div>
-					</div><!-- col-6 -->
-					<div class="col-md-6">
-						<div class="card mg-b-20">
-							<div class="card-body">
-								<div class="main-content-label mg-b-5">
-									Bar Chart
-								</div>
-								<p class="mg-b-20">Basic Charts Of Valex template.</p>
-								<div class="morris-wrapper-demo" id="morrisBar2"></div>
-							</div>
-						</div>
-					</div><!-- col-6 -->
-				</div>
-				<!-- /row --> --}}
-
-				{{-- <!-- row -->
-				<div class="row row-sm">
-					<div class="col-md-6">
-						<div class="card mg-b-md-20">
-							<div class="card-body">
-								<div class="main-content-label mg-b-5">
-								</div>
-							</div>
-						</div>
-					</div><!-- col-6 -->
-					<div class="col-md-6">
-						<div class="card mg-b-20">
-                            <div class="card-body">
-                                <div class="main-content-label mg-b-5">
-								</div>
-                            </div>
-                        </div>
-					</div><!-- col-6 -->
-				</div>
-                <!-- /row --> --}}
-
-
-				<!-- row closed -->
-			</div>
-			<!-- Container closed -->
-		</div>
-		<!-- main-content closed -->
+</div>
+<!-- Container closed -->
+</div>
+<!-- main-content closed -->
 @endsection
 
 @section('js')
@@ -404,5 +180,7 @@
     <script src="{{ URL::asset('assets/plugins/datatable/js/responsive.bootstrap4.min.js') }}"></script>
     <!--Internal  Datatable js -->
     <script src="{{ URL::asset('assets/js/table-data.js') }}"></script>
+    <!-- Internal Modal js-->
+    <script src="{{URL::asset('assets/js/modal.js')}}"></script>
 @endsection
 

@@ -33,6 +33,10 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::resource('/invoices', InvoicesController::class);
 
+// For show products in add invoice page
+
+Route::get('/section/{id}', [InvoicesController::class, 'getproducts']);
+
 // Route::get('/sections', [SectionsController::class, 'index']);
 
 Route::resource('/sections', SectionsController::class);
