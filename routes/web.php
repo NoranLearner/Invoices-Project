@@ -3,10 +3,11 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\InvoicesController;
-use App\Http\Controllers\SectionsController;
-use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\InvoicesController;
+use App\Http\Controllers\ProductsController;
+use App\Http\Controllers\SectionsController;
+use App\Http\Controllers\InvoicesDetailsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,7 +30,9 @@ Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-// Route::get('/invoices', [InvoicesController::class, 'index']);
+Route::resource('/sections', SectionsController::class);
+
+Route::resource('/products', ProductsController::class);
 
 Route::resource('/invoices', InvoicesController::class);
 
@@ -37,10 +40,8 @@ Route::resource('/invoices', InvoicesController::class);
 
 Route::get('/section/{id}', [InvoicesController::class, 'getproducts']);
 
-// Route::get('/sections', [SectionsController::class, 'index']);
+// For show Invoice Details
 
-Route::resource('/sections', SectionsController::class);
-
-Route::resource('/products', ProductsController::class);
+Route::get('/InvoicesDetails/{id}', [InvoicesDetailsController::class, 'edit']);
 
 Route::get('/{page}', [AdminController::class, 'index']);

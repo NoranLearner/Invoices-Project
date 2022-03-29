@@ -63,86 +63,50 @@
                                 <th class="border-bottom-0">قيمة الضريبة</th>
                                 <th class="border-bottom-0">الاجمالي</th>
                                 <th class="border-bottom-0">الحالة</th>
-                                <th class="border-bottom-0">ملاحظات</th>
+                                <th class="border-bottom-0">الملاحظات</th>
                                 <th class="border-bottom-0">العمليات</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>25251515</td>
-                                <td>24-3-2022</td>
-                                <td>1-4-2022</td>
-                                <td>منتج</td>
-                                <td>البنك الاهلى</td>
-                                <td>40%</td>
-                                <td>2400</td>
-                                <td>2000</td>
-                                <td>4400</td>
-                                <td>غير مدفوعه</td>
-                                <td>لم يتم السداد</td>
-                                <td>دفع</td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>25251515</td>
-                                <td>24-3-2022</td>
-                                <td>1-4-2022</td>
-                                <td>منتج</td>
-                                <td>البنك الاهلى</td>
-                                <td>40%</td>
-                                <td>2400</td>
-                                <td>2000</td>
-                                <td>4400</td>
-                                <td>غير مدفوعه</td>
-                                <td>لم يتم السداد</td>
-                                <td>دفع</td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>25251515</td>
-                                <td>24-3-2022</td>
-                                <td>1-4-2022</td>
-                                <td>منتج</td>
-                                <td>البنك الاهلى</td>
-                                <td>40%</td>
-                                <td>2400</td>
-                                <td>2000</td>
-                                <td>4400</td>
-                                <td>غير مدفوعه</td>
-                                <td>لم يتم السداد</td>
-                                <td>دفع</td>
-                            </tr>
-                            <tr>
-                                <td>4</td>
-                                <td>25251515</td>
-                                <td>24-3-2022</td>
-                                <td>1-4-2022</td>
-                                <td>منتج</td>
-                                <td>البنك الاهلى</td>
-                                <td>40%</td>
-                                <td>2400</td>
-                                <td>2000</td>
-                                <td>4400</td>
-                                <td>غير مدفوعه</td>
-                                <td>لم يتم السداد</td>
-                                <td>دفع</td>
-                            </tr>
-                            <tr>
-                                <td>5</td>
-                                <td>25251515</td>
-                                <td>24-3-2022</td>
-                                <td>1-4-2022</td>
-                                <td>منتج</td>
-                                <td>البنك الاهلى</td>
-                                <td>40%</td>
-                                <td>2400</td>
-                                <td>2000</td>
-                                <td>4400</td>
-                                <td>غير مدفوعه</td>
-                                <td>لم يتم السداد</td>
-                                <td>دفع</td>
-                            </tr>
+                            @foreach ($invoices as $invoice)
+                                <tr>
+                                    <td>{{ $invoice-> id }}</td>
+                                    <td>{{ $invoice-> invoice_number }}</td>
+                                    <td>{{ $invoice-> invoice_date }}</td>
+                                    <td>{{ $invoice-> due_date }}</td>
+                                    <td>{{ $invoice-> product }}</td>
+                                    {{-- Use Relationship --}}
+                                    {{-- Click to show invoices details --}}
+                                    <td>
+                                        <a href="{{url('InvoicesDetails')}}/{{$invoice-> id}}"> {{ $invoice-> section -> section_name }} </a>
+                                    </td>
+                                    <td>{{ $invoice-> discount }}</td>
+                                    <td>{{ $invoice-> rate_vat }}</td>
+                                    <td>{{ $invoice-> value_vat }}</td>
+                                    <td>{{ $invoice-> total }}</td>
+                                    <td>
+                                        @if ($invoice->value_status == 1)
+                                            <span class="text-success"> {{$invoice->status}} </span>
+                                        @elseif($invoice->value_status == 2)
+                                            <span class="text-danger"> {{$invoice->status}} </span>
+                                        @else
+                                            <span class="text-warning"> {{$invoice->status}} </span>
+                                        @endif
+                                    </td>
+                                    <td>{{ $invoice-> note }}</td>
+                                    <td>
+                                        {{-- <button class="btn btn-outline-success btn-sm"
+                                            data-name="{{ $product->product_name }}" data-pro_id="{{ $product->id }}"
+                                            data-section_name="{{ $product->section->section_name }}"
+                                            data-description="{{ $product->description }}" data-toggle="modal"
+                                            data-target="#edit_Product"> تعديل </button>
+
+                                        <button class="btn btn-outline-danger btn-sm " data-pro_id="{{ $product->id }}"
+                                            data-product_name="{{ $product->product_name }}" data-toggle="modal"
+                                            data-target="#modaldemo9"> حذف </button> --}}
+                                    </td>
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
