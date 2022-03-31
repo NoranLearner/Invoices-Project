@@ -6,6 +6,7 @@ use App\Models\invoices;
 use Illuminate\Http\Request;
 use App\Models\invoices_details;
 use App\Models\invoices_attachments;
+use Illuminate\Support\Facades\Storage;
 
 class InvoicesDetailsController extends Controller
 {
@@ -85,8 +86,32 @@ class InvoicesDetailsController extends Controller
      * @param  \App\Models\invoices_details  $invoices_details
      * @return \Illuminate\Http\Response
      */
-    public function destroy(invoices_details $invoices_details)
+    public function destroy(Request $request)
     {
-        //
+        $invoices = invoices_attachments::findOrFail($request->id_file);
+        // Delete from database
+        $invoices->delete();
+        // Delete from public folder
+        Storage::disk('public_uploads')->delete($request->invoice_number.'/'.$request->file_name);
+        session()->flash('delete', 'تم حذف المرفق بنجاح');
+        return back();
     }
+
+    // For view invoice attachments
+    // https://laravel.com/docs/8.x/filesystem
+    // config/filesystems.php
+    public function open_file($invoice_number,$file_name)
+    {
+        $files = Storage::disk('public_uploads')->getDriver()->getAdapter()->applyPathPrefix($invoice_number.'/'.$file_name);
+        return response()->file($files);
+    }
+
+    // For download invoice attachments
+    //
+    public function download_file($invoice_number,$file_name)
+    {
+        $files = Storage::disk('public_uploads')->getDriver()->getAdapter()->applyPathPrefix($invoice_number.'/'.$file_name);
+        return response()->download($files);
+    }
+
 }

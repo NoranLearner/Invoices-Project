@@ -44,4 +44,16 @@ Route::get('/section/{id}', [InvoicesController::class, 'getproducts']);
 
 Route::get('/InvoicesDetails/{id}', [InvoicesDetailsController::class, 'edit']);
 
+// For view invoice attachments
+
+Route::get('View_file/{invoice_number}/{file_name}', [InvoicesDetailsController::class,'open_file']);
+
+// For download invoice attachments
+
+Route::get('download/{invoice_number}/{file_name}', [InvoicesDetailsController::class, 'download_file']);
+
+// For delete invoice attachments
+
+Route::post('delete_file', [InvoicesDetailsController::class,'destroy'])->name('delete_file');
+
 Route::get('/{page}', [AdminController::class, 'index']);
