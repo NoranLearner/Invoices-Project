@@ -8,6 +8,7 @@ use App\Http\Controllers\InvoicesController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\SectionsController;
 use App\Http\Controllers\InvoicesDetailsController;
+use App\Http\Controllers\InvoicesAttachmentsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -55,5 +56,13 @@ Route::get('download/{invoice_number}/{file_name}', [InvoicesDetailsController::
 // For delete invoice attachments
 
 Route::post('delete_file', [InvoicesDetailsController::class,'destroy'])->name('delete_file');
+
+// For add invoice attachments
+
+Route::resource('/InvoiceAttachments', InvoicesAttachmentsController::class);
+
+// For edit invoice
+
+Route::get('/edit_invoice/{id}', [InvoicesController::class, 'edit']);
 
 Route::get('/{page}', [AdminController::class, 'index']);

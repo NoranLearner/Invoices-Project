@@ -28,7 +28,7 @@
 
 @section('content')
 
-<!-- Alert in modal -->
+<!-- Alert -->
 
 @if (session()->has('Add'))
     <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -46,15 +46,6 @@
                 <li>{{ $error }}</li>
             @endforeach
         </ul>
-    </div>
-@endif
-
-@if (session()->has('edit'))
-    <div class="alert alert-success alert-dismissible fade show" role="alert">
-        <strong>{{ session()->get('edit') }}</strong>
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
     </div>
 @endif
 
@@ -195,49 +186,73 @@
                             </div>
 
                             <div class="tab-pane" id="tab6">
-                                <div class="table-responsive mt-15">
-                                    <table class="table center-aligned-table mb-0 table-hover" style="text-align:center">
-                                        <thead>
-                                            <tr class="text-dark">
-                                                <th scope="col">#</th>
-                                                <th scope="col">اسم الملف</th>
-                                                <th scope="col">قام بالاضافة</th>
-                                                <th scope="col">تاريخ الاضافة</th>
-                                                <th scope="col">العمليات</th>
-                                            </tr>
-                                        </thead>
+                                <div class="card card-statistics">
 
-                                        <tbody>
-                                            <!-- Many attachements for invoice -->
-                                            @foreach ($attachments as $x)
-                                                <tr>
-                                                    <td>{{ $x-> id }}</td>
-                                                    <td>{{ $x->  file_name}}</td>
-                                                    <td>{{ $x->  Created_by}}</td>
-                                                    <td>{{ $x->  created_at}}</td>
-                                                    <td colspan="2">
-                                                        {{-- For view invoice attachments --}}
-                                                        <a class="btn btn-outline-success btn-sm"
-                                                        href="{{ url('View_file') }}/{{ $invoices->invoice_number }}/{{ $x->file_name }}"
-                                                        role="button"> <i class="fas fa-eye"></i> &nbsp; عرض</a>
+                                    {{-- for add attachments --}}
+                                    <div class="card-body">
+                                        <p class="text-danger">* صيغة المرفق pdf, jpeg ,.jpg , png </p>
+                                        <h5 class="card-title">اضافة مرفقات</h5>
+                                        <!-- Go to InvoicesAttachmentsController : store -->
+                                        <form action="{{url('/InvoiceAttachments')}}" method="post" enctype="multipart/form-data">
+                                            {{ csrf_field() }}
+                                            <div class="custom-file">
+                                                <!-- To add attachment we need file name , invoice number, invoice id -->
+                                                <input type="file" class="custom-file-input" id="customFile" name="file_name" required>
+                                                <input type="hidden" id="customFile" name="invoice_number" value="{{$invoices->invoice_number}}">
+                                                <input type="hidden" id="invoice_id" name="invoice_id" value="{{$invoices->id}}">
+                                                <label class="custom-file-label" for="customFile"> حدد المرفق </label>
+                                            </div>
+                                            <br><br>
+                                            <button type="submit" class="btn btn-primary btn-sm" name="uploadedFile">تاكيد </button>
+                                        </form>
+                                    </div>
 
-                                                        {{-- For download invoice attachments --}}
-                                                        <a class="btn btn-outline-info btn-sm"
-                                                        href="{{ url('download') }}/{{ $invoices->invoice_number }}/{{ $x->file_name }}"
-                                                        role="button"> <i class="fas fa-download"></i> &nbsp; تحميل</a>
-
-                                                        {{-- For delete invoice attachments --}}
-                                                        <button class="btn btn-outline-danger btn-sm"
-                                                        data-toggle="modal"
-                                                        data-file_name="{{ $x->file_name }}"
-                                                        data-invoice_number="{{ $x->invoice_number }}"
-                                                        data-id_file="{{ $x->id }}"
-                                                        data-target="#delete_file"> <i class="fas fa-trash"></i> &nbsp; حذف </button>
-                                                    </td>
+                                    {{-- show attachments details --}}
+                                    <div class="table-responsive mt-15">
+                                        <table class="table center-aligned-table mb-0 table-hover" style="text-align:center">
+                                            <thead>
+                                                <tr class="text-dark">
+                                                    <th scope="col">#</th>
+                                                    <th scope="col">اسم الملف</th>
+                                                    <th scope="col">قام بالاضافة</th>
+                                                    <th scope="col">تاريخ الاضافة</th>
+                                                    <th scope="col">العمليات</th>
                                                 </tr>
-                                            @endforeach
-                                        </tbody>
-                                    </table>
+                                            </thead>
+
+                                            <tbody>
+                                                <!-- Many attachements for invoice -->
+                                                @foreach ($attachments as $x)
+                                                    <tr>
+                                                        <td>{{ $x-> id }}</td>
+                                                        <td>{{ $x->  file_name}}</td>
+                                                        <td>{{ $x->  Created_by}}</td>
+                                                        <td>{{ $x->  created_at}}</td>
+                                                        <td colspan="2">
+                                                            {{-- For view invoice attachments --}}
+                                                            <a class="btn btn-outline-success btn-sm"
+                                                            href="{{ url('View_file') }}/{{ $invoices->invoice_number }}/{{ $x->file_name }}"
+                                                            role="button"> <i class="fas fa-eye"></i> &nbsp; عرض</a>
+
+                                                            {{-- For download invoice attachments --}}
+                                                            <a class="btn btn-outline-info btn-sm"
+                                                            href="{{ url('download') }}/{{ $invoices->invoice_number }}/{{ $x->file_name }}"
+                                                            role="button"> <i class="fas fa-download"></i> &nbsp; تحميل</a>
+
+                                                            {{-- For delete invoice attachments --}}
+                                                            <button class="btn btn-outline-danger btn-sm"
+                                                            data-toggle="modal"
+                                                            data-file_name="{{ $x->file_name }}"
+                                                            data-invoice_number="{{ $x->invoice_number }}"
+                                                            data-id_file="{{ $x->id }}"
+                                                            data-target="#delete_file"> <i class="fas fa-trash"></i> &nbsp; حذف </button>
+                                                        </td>
+                                                    </tr>
+                                                @endforeach
+                                            </tbody>
+                                        </table>
+                                    </div>
+
                                 </div>
                             </div>
 
@@ -322,5 +337,12 @@
             modal.find('.modal-body #file_name').val(file_name);
             modal.find('.modal-body #invoice_number').val(invoice_number);
         })
+    </script>
+    <!-- Add the following code if you want the name of the file appear on select -->
+    <script>
+        $(".custom-file-input").on("change", function() {
+            var fileName = $(this).val().split("\\").pop();
+            $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+        });
     </script>
 @endsection

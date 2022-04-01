@@ -95,15 +95,14 @@
                                     </td>
                                     <td>{{ $invoice-> note }}</td>
                                     <td>
-                                        {{-- <button class="btn btn-outline-success btn-sm"
-                                            data-name="{{ $product->product_name }}" data-pro_id="{{ $product->id }}"
-                                            data-section_name="{{ $product->section->section_name }}"
-                                            data-description="{{ $product->description }}" data-toggle="modal"
-                                            data-target="#edit_Product"> تعديل </button>
-
-                                        <button class="btn btn-outline-danger btn-sm " data-pro_id="{{ $product->id }}"
-                                            data-product_name="{{ $product->product_name }}" data-toggle="modal"
-                                            data-target="#modaldemo9"> حذف </button> --}}
+                                        <div class="dropdown">
+                                            <button class="btn ripple btn-light btn-sm" data-toggle="dropdown" type="button" aria-expanded="false" aria-haspopup="true"> العمليات
+                                                <i class="fas fa-caret-down ml-1"></i>
+                                            </button>
+                                            <div class="dropdown-menu tx-13">
+                                                <a href="{{url('edit_invoice')}}/{{$invoice->id}}" class="dropdown-item"> تعديل الفاتورة </a>
+                                            </div>
+                                        </div>
                                     </td>
                                 </tr>
                             @endforeach
