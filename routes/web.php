@@ -65,4 +65,12 @@ Route::resource('/InvoiceAttachments', InvoicesAttachmentsController::class);
 
 Route::get('/edit_invoice/{id}', [InvoicesController::class, 'edit']);
 
+// For change payment status
+
+Route::get('/status_show/{id}', [InvoicesController::class, 'show'])-> name('status_show');
+
+// For save payment value in database
+
+Route::post('/status_update/{id}', [InvoicesController::class, 'status_update']) -> name('status_update');
+
 Route::get('/{page}', [AdminController::class, 'index']);

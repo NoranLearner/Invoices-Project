@@ -109,9 +109,12 @@ class InvoicesController extends Controller
      * @param  \App\Models\invoices  $invoices
      * @return \Illuminate\Http\Response
      */
-    public function show(invoices $invoices)
+    public function show($id)
     {
-        //
+        // For change payment status
+        $invoices = invoices::where('id', $id)->first();
+        $sections = sections::all();
+        return view('invoices.status_update', compact('sections', 'invoices'));
     }
 
     /**
@@ -185,7 +188,7 @@ class InvoicesController extends Controller
         */
 
         $attachments = invoices_attachments::where('invoice_id', $id)->first();
-        
+
         $id_page =$request->id_page;
 
         // For Permanently Delete , Delete Attachments
@@ -213,5 +216,63 @@ class InvoicesController extends Controller
     {
         $products = DB::table("products")->where("section_id", $id)->pluck("product_name", "id");
         return json_encode($products);
+    }
+
+    // For save payment value in database
+    public function status_update($id, Request $request){
+
+        $invoices = invoices::findOrFail($id);
+
+        // Form status_show page
+        if ($request->status === 'مدفوعة') {
+
+            // Make change in invoices page
+            $invoices->update([
+                'value_status' => 1,
+                'status' => $request->status,
+                'payment_date' => $request->payment_date,
+            ]);
+
+            // Add payment status in invoices_details page
+            invoices_details::create([
+                'id_invoice' => $request->invoice_id,
+                'invoice_number' => $request->invoice_number,
+                'product' => $request->product,
+                'section' => $request->section,
+                'status' => $request->status,
+                'value_status' => 1,
+                'note' => $request->note,
+                'payment_date' => $request->payment_date,
+                'user' => (Auth::user()->name),
+            ]);
+        }
+
+        else {
+
+            // Make change in invoices page
+            $invoices->update([
+                // Anything else
+                'value_status' => 3,
+                'status' => $request->status,
+                'payment_date' => $request->payment_date,
+            ]);
+
+            // Add payment status in invoices_details page
+            invoices_Details::create([
+                'id_invoice' => $request->invoice_id,
+                'invoice_number' => $request->invoice_number,
+                'product' => $request->product,
+                'section' => $request->section,
+                'status' => $request->status,
+                'value_status' => 3,
+                'note' => $request->note,
+                'payment_date' => $request->payment_date,
+                'user' => (Auth::user()->name),
+            ]);
+
+        }
+
+        session()->flash('Status_Update');
+        return redirect('/invoices');
     }
 }
