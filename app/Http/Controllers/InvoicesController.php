@@ -9,6 +9,7 @@ use App\Models\invoices_details;
 use Illuminate\Support\Facades\DB;
 use App\Models\invoices_attachments;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class InvoicesController extends Controller
 {
@@ -161,9 +162,50 @@ class InvoicesController extends Controller
      * @param  \App\Models\invoices  $invoices
      * @return \Illuminate\Http\Response
      */
-    public function destroy(invoices $invoices)
+    public function destroy(Request $request)
     {
-        //
+        // For check
+        // return $request;
+
+        $id = $request->invoice_id;
+        $invoices = invoices::where('id', $id)->first();
+
+        /*
+        // Permanently Delete
+        $invoices->forceDelete();
+        session()->flash('delete_invoice');
+        return redirect('/invoices');
+        */
+
+        /*
+        // Soft Delete - Remove from invoices page not from database
+        $invoices->delete();
+        session()->flash('delete_invoice');
+        return redirect('/invoices');
+        */
+
+        $attachments = invoices_attachments::where('invoice_id', $id)->first();
+        
+        $id_page =$request->id_page;
+
+        // For Permanently Delete , Delete Attachments
+        if (!$id_page==2) {
+            // invoice has attachment
+            if (!empty($attachments->invoice_number)) {
+                Storage::disk('public_uploads')->deleteDirectory($attachments->invoice_number);
+            }
+            // Permanently Delete
+            $invoices->forceDelete();
+            session()->flash('delete_invoice');
+            return redirect('/invoices');
+        }
+
+        else {
+            // Soft Delete
+            $invoices->delete();
+            session()->flash('archive_invoice');
+            return redirect('/Archive');
+        }
     }
 
     // For show products in add invoice page
