@@ -20,6 +20,8 @@ class InvoicesDetailsController extends Controller
         //
     }
 
+// __________________________________________________________________________ //
+
     /**
      * Show the form for creating a new resource.
      *
@@ -29,6 +31,8 @@ class InvoicesDetailsController extends Controller
     {
         //
     }
+
+// __________________________________________________________________________ //
 
     /**
      * Store a newly created resource in storage.
@@ -41,6 +45,8 @@ class InvoicesDetailsController extends Controller
         //
     }
 
+// __________________________________________________________________________ //
+
     /**
      * Display the specified resource.
      *
@@ -51,6 +57,8 @@ class InvoicesDetailsController extends Controller
     {
         //
     }
+
+// __________________________________________________________________________ //
 
     /**
      * Show the form for editing the specified resource.
@@ -68,6 +76,8 @@ class InvoicesDetailsController extends Controller
         return view('invoices.details_invoice',compact('invoices','details','attachments'));
     }
 
+// __________________________________________________________________________ //
+
     /**
      * Update the specified resource in storage.
      *
@@ -79,6 +89,8 @@ class InvoicesDetailsController extends Controller
     {
         //
     }
+
+// __________________________________________________________________________ //
 
     /**
      * Remove the specified resource from storage.
@@ -97,6 +109,8 @@ class InvoicesDetailsController extends Controller
         return back();
     }
 
+// __________________________________________________________________________ //
+
     // For view invoice attachments
     // https://laravel.com/docs/8.x/filesystem
     // config/filesystems.php
@@ -105,6 +119,8 @@ class InvoicesDetailsController extends Controller
         $files = Storage::disk('public_uploads')->getDriver()->getAdapter()->applyPathPrefix($invoice_number.'/'.$file_name);
         return response()->file($files);
     }
+
+// __________________________________________________________________________ //
 
     // For download invoice attachments
     //

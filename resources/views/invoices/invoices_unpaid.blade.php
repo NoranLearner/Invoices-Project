@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-    قائمة الفواتير
+    الفواتير غير المدفوعة
 @stop
 
 @section('css')
@@ -22,7 +22,7 @@
         <div class="my-auto">
             <div class="d-flex">
                 <h4 class="content-title mb-0 my-auto">الفواتير</h4>
-                <span class="text-muted mt-1 tx-13 mr-2 mb-0">/ قائمة الفواتير</span>
+                <span class="text-muted mt-1 tx-13 mr-2 mb-0">/ الفواتير غير المدفوعة</span>
             </div>
         </div>
     </div>
@@ -87,7 +87,7 @@
         <div class="card mg-b-20">
             <div class="card-header pb-0">
                 <div class="d-flex justify-content-between">
-                    <h4 class="card-title mg-b-0">قائمة الفواتير</h4>
+                    <h4 class="card-title mg-b-0">الفواتير غير المدفوعة</h4>
                     <!-- Basic modal -->
                     <div class="col-sm-6 col-md-4 col-xl-3">
                         <a class="btn btn-outline-primary btn-block" href="invoices/create">

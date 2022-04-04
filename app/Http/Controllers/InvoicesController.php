@@ -24,6 +24,8 @@ class InvoicesController extends Controller
         return view('invoices.invoices', compact('invoices'));
     }
 
+// __________________________________________________________________________ //
+
     /**
      * Show the form for creating a new resource.
      *
@@ -34,6 +36,8 @@ class InvoicesController extends Controller
         $sections = sections::all();
         return view('invoices.add_invoice', compact('sections'));
     }
+
+// __________________________________________________________________________ //
 
     /**
      * Store a newly created resource in storage.
@@ -103,6 +107,8 @@ class InvoicesController extends Controller
         return back();
     }
 
+// __________________________________________________________________________ //
+
     /**
      * Display the specified resource.
      *
@@ -117,6 +123,8 @@ class InvoicesController extends Controller
         return view('invoices.status_update', compact('sections', 'invoices'));
     }
 
+// __________________________________________________________________________ //
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -129,6 +137,8 @@ class InvoicesController extends Controller
         $sections = sections::all();
         return view('invoices.edit_invoice', compact('sections', 'invoices'));
     }
+
+// __________________________________________________________________________ //
 
     /**
      * Update the specified resource in storage.
@@ -158,6 +168,8 @@ class InvoicesController extends Controller
         session()->flash('edit', 'تم تعديل الفاتورة بنجاح');
         return back();
     }
+
+// __________________________________________________________________________ //
 
     /**
      * Remove the specified resource from storage.
@@ -189,9 +201,11 @@ class InvoicesController extends Controller
 
         $attachments = invoices_attachments::where('invoice_id', $id)->first();
 
+        // Look in archive_invoice.blade.php file
         $id_page =$request->id_page;
 
         // For Permanently Delete , Delete Attachments
+        // If id_page==2 , Archive this invoice
         if (!$id_page==2) {
             // invoice has attachment
             if (!empty($attachments->invoice_number)) {
@@ -204,12 +218,14 @@ class InvoicesController extends Controller
         }
 
         else {
-            // Soft Delete
+            // Soft Delete - For Archive invoice
             $invoices->delete();
             session()->flash('archive_invoice');
-            return redirect('/Archive');
+            return redirect('/archive_invoice');
         }
     }
+
+// __________________________________________________________________________ //
 
     // For show products in add invoice page
     public function getproducts($id)
@@ -217,6 +233,8 @@ class InvoicesController extends Controller
         $products = DB::table("products")->where("section_id", $id)->pluck("product_name", "id");
         return json_encode($products);
     }
+
+// __________________________________________________________________________ //
 
     // For save payment value in database
     public function status_update($id, Request $request){
@@ -275,4 +293,33 @@ class InvoicesController extends Controller
         session()->flash('Status_Update');
         return redirect('/invoices');
     }
+
+// __________________________________________________________________________ //
+
+// For show paid invoices
+public function invoice_paid(){
+    $invoices = invoices::where('value_status', 1)->get();
+    return view('invoices.invoices_paid',compact('invoices'));
 }
+
+// __________________________________________________________________________ //
+
+// For show unpaid invoices
+public function invoice_unpaid(){
+    $invoices = invoices::where('value_status',2)->get();
+    return view('invoices.invoices_unpaid',compact('invoices'));
+}
+
+// __________________________________________________________________________ //
+
+// For show partial paid invoices
+public function invoice_partial(){
+    $invoices = invoices::where('value_status',3)->get();
+    return view('invoices.invoices_partial',compact('invoices'));
+}
+
+// __________________________________________________________________________ //
+}
+
+
+

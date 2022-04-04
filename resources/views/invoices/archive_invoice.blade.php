@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-    قائمة الفواتير
+ارشيف الفواتير
 @stop
 
 @section('css')
@@ -22,7 +22,7 @@
         <div class="my-auto">
             <div class="d-flex">
                 <h4 class="content-title mb-0 my-auto">الفواتير</h4>
-                <span class="text-muted mt-1 tx-13 mr-2 mb-0">/ قائمة الفواتير</span>
+                <span class="text-muted mt-1 tx-13 mr-2 mb-0">/ ارشيف الفواتير</span>
             </div>
         </div>
     </div>
@@ -38,17 +38,6 @@
         window.onload = function() {
             notif({
                 msg: "تم حذف الفاتورة بنجاح",
-                type: "success"
-            })
-        }
-    </script>
-@endif
-
-@if (session()->has('Status_Update'))
-    <script>
-        window.onload = function() {
-            notif({
-                msg: "تم تحديث حالة الدفع بنجاح",
                 type: "success"
             })
         }
@@ -87,7 +76,7 @@
         <div class="card mg-b-20">
             <div class="card-header pb-0">
                 <div class="d-flex justify-content-between">
-                    <h4 class="card-title mg-b-0">قائمة الفواتير</h4>
+                    <h4 class="card-title mg-b-0">ارشيف الفواتير</h4>
                     <!-- Basic modal -->
                     <div class="col-sm-6 col-md-4 col-xl-3">
                         <a class="btn btn-outline-primary btn-block" href="invoices/create">
@@ -150,25 +139,15 @@
                                                 <i class="fas fa-caret-down ml-1"></i>
                                             </button>
                                             <div class="dropdown-menu tx-13" style="border:1px solid #ddd">
-                                                <!-- Edit invoice -->
-                                                <a href="{{url('edit_invoice')}}/{{$invoice->id}}" class="dropdown-item">
-                                                    <i class="text-primary fas fa-edit"></i>
-                                                    &nbsp;&nbsp;تعديل الفاتورة
-                                                </a>
-                                                <!-- Payment Status -->
-                                                <a href="{{URL::route('status_show', [$invoice->id])}}" class="dropdown-item">
-                                                    <i class="text-success fas fa-check"></i>
-                                                    &nbsp;&nbsp; تغيير حاله الدفع
+                                                <!-- Restore archived invoice  -->
+                                                <a href="#" class="dropdown-item" data-invoice_id="{{$invoice->id}}" data-toggle="modal" data-target="#Transfer_invoice">
+                                                    <i class="text-warning fas fa-exchange-alt"></i>
+                                                    &nbsp;&nbsp; نقل الى الفواتير
                                                 </a>
                                                 <!-- Delete invoice -->
                                                 <a href="#" class="dropdown-item" data-invoice_id="{{$invoice->id}}" data-toggle="modal" data-target="#delete_invoice">
                                                     <i class="text-danger fas fa-trash"></i>
                                                     &nbsp;&nbsp;حذف الفاتورة
-                                                </a>
-                                                <!-- Archive invoice -->
-                                                <a href="#" class="dropdown-item" data-invoice_id="{{$invoice->id}}" data-toggle="modal" data-target="#Transfer_invoice">
-                                                    <i class="text-warning fas fa-exchange-alt"></i>
-                                                    &nbsp;&nbsp;أرشفة الفاتورة
                                                 </a>
                                             </div>
                                         </div>
@@ -183,6 +162,35 @@
     </div>
     <!--/div-->
 
+    <!-- Restore modal -->
+    <div class="modal fade" id="Transfer_invoice" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content modal-content-demo">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">إلغاء أرشفة الفاتورة</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="{{route('archive_invoice.update','test')}}" method="post">
+                {{ method_field('patch') }}
+                {{ csrf_field() }}
+                <div class="modal-body">
+                    <p>هل انت متاكد من إلغاء عملية الارشفة ؟</p>
+                    <br/>
+                    <!--For use in script-->
+                    <input type="hidden" name="invoice_id" id="invoice_id" value="">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn ripple btn-secondary" data-dismiss="modal">الغاء</button>
+                    <button type="submit" class="btn ripple btn-danger">تاكيد</button>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- End Restore modal-->
+
     <!-- Delete modal -->
     <div class="modal fade" id="delete_invoice" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -194,7 +202,7 @@
                     </button>
                 </div>
                 <!-- If found problem go to test, http://127.0.0.1:8000/invoices/test-->
-                <form action="{{route('invoices.destroy','test')}}" method="post">
+                <form action="{{route('archive_invoice.destroy','test')}}" method="post">
                 {{ method_field('delete') }}
                 {{ csrf_field() }}
                 <div class="modal-body">
@@ -212,36 +220,6 @@
         </div>
     </div>
     <!-- End Delete modal-->
-
-    <!-- Archive modal -->
-    <div class="modal fade" id="Transfer_invoice" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content modal-content-demo">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">أرشفة الفاتورة</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <form action="{{route('invoices.destroy','test')}}" method="post">
-                {{ method_field('delete') }}
-                {{ csrf_field() }}
-                <div class="modal-body">
-                    <p>هل انت متاكد من عملية الارشفة ؟</p>
-                    <br/>
-                    <!--For use in script-->
-                    <input type="hidden" name="invoice_id" id="invoice_id" value="">
-                    <input type="hidden" name="id_page" id="id_page" value="2">
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn ripple btn-secondary" data-dismiss="modal">الغاء</button>
-                    <button type="submit" class="btn ripple btn-danger">تاكيد</button>
-                </div>
-                </form>
-            </div>
-        </div>
-    </div>
-    <!-- End Archive modal-->
 
 </div>
 <!-- /row -->
@@ -277,6 +255,15 @@
     <script src="{{URL::asset('assets/plugins/notify/js/notifit-custom.js')}}"></script>
     <!-- Internal Modal js-->
     <script src="{{URL::asset('assets/js/modal.js')}}"></script>
+    <!-- For Restore Modal js-->
+    <script>
+        $('#Transfer_invoice').on('show.bs.modal', function(event) {
+            var button = $(event.relatedTarget)
+            var invoice_id = button.data('invoice_id')
+            var modal = $(this)
+            modal.find('.modal-body #invoice_id').val(invoice_id);
+        })
+    </script>
     <!-- For Delete Modal js-->
     <script>
         $('#delete_invoice').on('show.bs.modal', function(event) {
@@ -287,13 +274,5 @@
             modal.find('.modal-body #invoice_id').val(invoice_id);
         })
     </script>
-    <!-- For Archive Modal js-->
-    <script>
-        $('#Transfer_invoice').on('show.bs.modal', function(event) {
-            var button = $(event.relatedTarget)
-            var invoice_id = button.data('invoice_id')
-            var modal = $(this)
-            modal.find('.modal-body #invoice_id').val(invoice_id);
-        })
-    </script>
 @endsection
+

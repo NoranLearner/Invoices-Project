@@ -106,8 +106,7 @@
                                             <img src="{{URL::asset('assets/img/brand/favicon.png')}}" class="sign-favicon ht-40" alt="logo">
                                         </a>
                                         <h1 class="main-logo1 ml-1 mr-0 my-auto tx-28">
-                                            برنامج
-                                            <span>الفواتير</span>
+                                            <span> &nbsp; برنامج الفواتير </span>
                                         </h1>
                                     </div>
 

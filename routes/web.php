@@ -7,6 +7,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\InvoicesController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\SectionsController;
+use App\Http\Controllers\InvoiceArchiveController;
 use App\Http\Controllers\InvoicesDetailsController;
 use App\Http\Controllers\InvoicesAttachmentsController;
 
@@ -72,5 +73,21 @@ Route::get('/status_show/{id}', [InvoicesController::class, 'show'])-> name('sta
 // For save payment value in database
 
 Route::post('/status_update/{id}', [InvoicesController::class, 'status_update']) -> name('status_update');
+
+// For show paid invoices
+
+Route::get('invoices_paid', [InvoicesController::class, 'invoice_paid']);
+
+// For show unpaid invoices
+
+Route::get('invoices_unpaid', [InvoicesController::class, 'invoice_unpaid']);
+
+// For show partial paid invoices
+
+Route::get('invoices_partial', [InvoicesController::class, 'invoice_partial']);
+
+// For show archive invoices && restore archived invoice
+
+Route::resource('archive_invoice', InvoiceArchiveController::class);
 
 Route::get('/{page}', [AdminController::class, 'index']);
