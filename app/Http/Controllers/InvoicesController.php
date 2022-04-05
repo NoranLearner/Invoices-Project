@@ -319,6 +319,14 @@ public function invoice_partial(){
 }
 
 // __________________________________________________________________________ //
+
+// For print invoice
+public function print_invoice($id){
+    $invoices = invoices::where('id', $id)->first();
+    return view('invoices.print_invoice',compact('invoices'));
+}
+
+// __________________________________________________________________________ //
 }
 
 

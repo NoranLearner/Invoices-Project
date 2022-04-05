@@ -157,7 +157,7 @@
                                                 </a>
                                                 <!-- Payment Status -->
                                                 <a href="{{URL::route('status_show', [$invoice->id])}}" class="dropdown-item">
-                                                    <i class="text-success fas fa-check"></i>
+                                                    <i class="text-primary fas fa-check"></i>
                                                     &nbsp;&nbsp; تغيير حاله الدفع
                                                 </a>
                                                 <!-- Delete invoice -->
@@ -169,6 +169,11 @@
                                                 <a href="#" class="dropdown-item" data-invoice_id="{{$invoice->id}}" data-toggle="modal" data-target="#Transfer_invoice">
                                                     <i class="text-warning fas fa-exchange-alt"></i>
                                                     &nbsp;&nbsp;أرشفة الفاتورة
+                                                </a>
+                                                <!-- Print invoice -->
+                                                <a href="{{url('print_invoice')}}/{{$invoice->id}}" class="dropdown-item">
+                                                    <i class="text-success fas fa-print"></i>
+                                                    &nbsp;&nbsp;طباعة الفاتورة
                                                 </a>
                                             </div>
                                         </div>
