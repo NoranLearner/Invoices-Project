@@ -87,13 +87,21 @@
         <div class="card mg-b-20">
             <div class="card-header pb-0">
                 <div class="d-flex justify-content-between">
-                    <h4 class="card-title mg-b-0">قائمة الفواتير</h4>
-                    <!-- Basic modal -->
-                    <div class="col-sm-6 col-md-4 col-xl-3">
+
+                    <h4 class="card-title col-xl-6">قائمة الفواتير</h4>
+
+                    <div class="col-xl-3">
                         <a class="btn btn-outline-primary btn-block" href="invoices/create">
                             <i class="fas fa-plus"></i>&nbsp; اضافة فاتورة
                         </a>
                     </div>
+
+                    <div class="col-xl-3">
+                        <a class="btn btn-outline-primary btn-block" href="{{url('export_invoices')}}">
+                            <i class="fas fa-file-download"></i> &nbsp;  تصدير اكسيل
+                        </a>
+                    </div>
+
                 </div>
             </div>
             <div class="card-body">

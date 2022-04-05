@@ -94,4 +94,8 @@ Route::resource('archive_invoice', InvoiceArchiveController::class);
 
 Route::get('print_invoice/{id}', [InvoicesController::class, 'print_invoice']);
 
+// For export excel with maatwebsite package
+
+Route::get('export_invoices', [InvoicesController::class, 'export']);
+
 Route::get('/{page}', [AdminController::class, 'index']);
