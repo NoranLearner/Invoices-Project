@@ -2,14 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\invoices;
 use App\Models\sections;
 use Illuminate\Http\Request;
 use App\Models\invoices_details;
+use App\Notifications\AddInvoice;
 use Illuminate\Support\Facades\DB;
 use App\Models\invoices_attachments;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Notification;
 
 class InvoicesController extends Controller
 {
@@ -68,7 +71,9 @@ class InvoicesController extends Controller
         ]);
 
         // Add Invoices Details Table
+
         $invoice_id = invoices::latest()->first()->id;
+
         invoices_details::create([
             'id_invoice' => $invoice_id,
             'invoice_number' => $request->invoice_number,
@@ -103,6 +108,14 @@ class InvoicesController extends Controller
             $request->pic->move(public_path('Attachments/' . $invoice_number), $imageName);
         }
 
+        // Notification - For send mail - https://laravel.com/docs/8.x/notifications#mail-notifications
+        $user = User::first();
+        // First Method
+        // $user->notify(new AddInvoice($invoice_id));
+        // Second Method
+        Notification::send($user, new AddInvoice($invoice_id));
+
+        // Alert
         session()->flash('Add', 'تم اضافة الفاتورة بنجاح');
         return back();
     }
