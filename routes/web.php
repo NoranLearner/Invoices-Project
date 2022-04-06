@@ -10,6 +10,9 @@ use App\Http\Controllers\SectionsController;
 use App\Http\Controllers\InvoiceArchiveController;
 use App\Http\Controllers\InvoicesDetailsController;
 use App\Http\Controllers\InvoicesAttachmentsController;
+// spatie package
+use App\Http\Controllers\UserManagement\RoleController;
+use App\Http\Controllers\UserManagement\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -97,5 +100,13 @@ Route::get('print_invoice/{id}', [InvoicesController::class, 'print_invoice']);
 // For export excel with maatwebsite package
 
 Route::get('export_invoices', [InvoicesController::class, 'export']);
+
+// For spatie package
+
+Route::group(['middleware' => ['auth']], function() {
+    Route::resource('roles', RoleController::class);
+    Route::resource('users', UserController::class);
+});
+
 
 Route::get('/{page}', [AdminController::class, 'index']);

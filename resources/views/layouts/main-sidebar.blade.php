@@ -117,8 +117,8 @@
                             <i class="angle fe fe-chevron-down"></i>
                         </a>
 						<ul class="slide-menu">
-                            <li><a class="slide-item" href="{{ url('/' . $page='mail') }}">قائمة المستخدمين</a></li>
-							<li><a class="slide-item" href="{{ url('/' . $page='mail-compose') }}">صلاحيات المستخدمين</a></li>
+                            <li><a class="slide-item" href="{{ url('/' . ($page = 'users')) }}">قائمة المستخدمين</a></li>
+							<li><a class="slide-item" href="{{ url('/' . ($page = 'roles')) }}">صلاحيات المستخدمين</a></li>
 						</ul>
 					</li>
 

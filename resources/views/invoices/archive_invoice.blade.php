@@ -77,12 +77,6 @@
             <div class="card-header pb-0">
                 <div class="d-flex justify-content-between">
                     <h4 class="card-title mg-b-0">ارشيف الفواتير</h4>
-                    <!-- Basic modal -->
-                    <div class="col-sm-6 col-md-4 col-xl-3">
-                        <a class="btn btn-outline-primary btn-block" href="invoices/create">
-                            <i class="fas fa-plus"></i>&nbsp; اضافة فاتورة
-                        </a>
-                    </div>
                 </div>
             </div>
             <div class="card-body">

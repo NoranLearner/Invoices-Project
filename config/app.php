@@ -165,8 +165,11 @@ return [
         /*
          * Package Service Providers...
          */
-
+        // maatwebsite package
         Maatwebsite\Excel\ExcelServiceProvider::class,
+        // Spatie package
+        Spatie\Permission\PermissionServiceProvider::class,
+        Collective\Html\HtmlServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -233,6 +236,9 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         // maatwebsite package
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
+        // Spatie package
+        'Form' => Collective\Html\FormFacade::class,
+        'Html' => Collective\Html\HtmlFacade::class,
     ],
 
 ];
