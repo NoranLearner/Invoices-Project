@@ -80,10 +80,12 @@
                 <div class="d-flex justify-content-between">
                     <h4 class="card-title mg-b-0">المنتجات</h4>
                     <!-- Basic modal -->
-                    <div class="col-sm-6 col-md-4 col-xl-3">
-                        {{-- <a class="modal-effect btn btn-primary-gradient btn-block" data-effect="effect-scale" data-toggle="modal" href="#exampleModal">اضافة منتج</a> --}}
-                        <a class="modal-effect btn btn-outline-primary btn-block" data-effect="effect-scale" data-toggle="modal" href="#exampleModal">اضافة منتج</a>
-                    </div>
+                    @can('اضافة منتج')
+                        <div class="col-sm-6 col-md-4 col-xl-3">
+                            {{-- <a class="modal-effect btn btn-primary-gradient btn-block" data-effect="effect-scale" data-toggle="modal" href="#exampleModal">اضافة منتج</a> --}}
+                            <a class="modal-effect btn btn-outline-primary btn-block" data-effect="effect-scale" data-toggle="modal" href="#exampleModal">اضافة منتج</a>
+                        </div>
+                    @endcan
                 </div>
             </div>
             <div class="card-body">
@@ -111,15 +113,19 @@
                                     <td>{{ $product->section->section_name }}</td>
                                     <td>{{ $product->description }}</td>
                                     <td>
-                                        <button class="btn btn-outline-success btn-sm"
-                                            data-name="{{ $product->product_name }}" data-pro_id="{{ $product->id }}"
-                                            data-section_name="{{ $product->section->section_name }}"
-                                            data-description="{{ $product->description }}" data-toggle="modal"
-                                            data-target="#edit_Product"> تعديل </button>
+                                        @can('تعديل منتج')
+                                            <button class="btn btn-outline-success btn-sm"
+                                                data-name="{{ $product->product_name }}" data-pro_id="{{ $product->id }}"
+                                                data-section_name="{{ $product->section->section_name }}"
+                                                data-description="{{ $product->description }}" data-toggle="modal"
+                                                data-target="#edit_Product"> تعديل </button>
+                                        @endcan
 
-                                        <button class="btn btn-outline-danger btn-sm " data-pro_id="{{ $product->id }}"
-                                            data-product_name="{{ $product->product_name }}" data-toggle="modal"
-                                            data-target="#modaldemo9"> حذف </button>
+                                        @can('حذف منتج')
+                                            <button class="btn btn-outline-danger btn-sm " data-pro_id="{{ $product->id }}"
+                                                data-product_name="{{ $product->product_name }}" data-toggle="modal"
+                                                data-target="#modaldemo9"> حذف </button>
+                                        @endcan
                                     </td>
                                 </tr>
                             @endforeach

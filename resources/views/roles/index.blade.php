@@ -74,11 +74,13 @@
 
                     <h4 class="card-title col-xl-6">صلاحيات المستخدمين</h4>
 
-                    <div class="col-sm-1 col-md-2 col-xl-3">
-                            <a class="btn btn-outline-primary btn-block" href="{{ route('roles.create') }}">
-                                <i class="fas fa-plus"></i>&nbsp; اضافة صلاحية
-                            </a>
-                    </div>
+                    @can('اضافة صلاحية')
+                        <div class="col-sm-1 col-md-2 col-xl-3">
+                                <a class="btn btn-outline-primary btn-block" href="{{ route('roles.create') }}">
+                                    <i class="fas fa-plus"></i>&nbsp; اضافة صلاحية
+                                </a>
+                        </div>
+                    @endcan
 
                 </div>
             </div>
@@ -100,29 +102,25 @@
                         <tbody>
                             @foreach ($roles as $key => $role)
                                 <tr>
-                                    <td>{{ ++$i }}</td>
+                                    {{-- <td>{{ ++$i }}</td> --}}
+                                    <td>{{ $role->id }}</td>
                                     <td>{{ $role->name }}</td>
                                     <td>
                                         @can('عرض صلاحية')
-                                            <a class="btn btn-success btn-sm"
-                                                href="{{ route('roles.show', $role->id) }}">عرض</a>
+                                            <a class="btn btn-success btn-sm" href="{{ route('roles.show', $role->id) }}">عرض</a>
                                         @endcan
 
                                         @can('تعديل صلاحية')
-                                            <a class="btn btn-primary btn-sm"
-                                                href="{{ route('roles.edit', $role->id) }}">تعديل</a>
+                                            <a class="btn btn-primary btn-sm" href="{{ route('roles.edit', $role->id) }}">تعديل</a>
                                         @endcan
 
                                         @if ($role->name !== 'owner')
                                             @can('حذف صلاحية')
-                                                {!! Form::open(['method' => 'DELETE', 'route' => ['roles.destroy',
-                                                $role->id], 'style' => 'display:inline']) !!}
+                                                {!! Form::open(['method' => 'DELETE', 'route' => ['roles.destroy', $role->id], 'style' => 'display:inline']) !!}
                                                 {!! Form::submit('حذف', ['class' => 'btn btn-danger btn-sm']) !!}
                                                 {!! Form::close() !!}
                                             @endcan
                                         @endif
-
-
                                     </td>
                                 </tr>
                             @endforeach

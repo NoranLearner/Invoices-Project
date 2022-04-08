@@ -18,6 +18,23 @@ use Illuminate\Support\Facades\Notification;
 
 class InvoicesController extends Controller
 {
+    function __construct(){
+        // $this->middleware('permission: الفواتير', ['only' => ['index']]);
+        // $this->middleware('permission: قائمة الفواتير', ['only' => ['index']]);
+        // $this->middleware('permission: اضافة فاتورة', ['only' => ['create','store']]);
+        // $this->middleware('permission: تغير حالة الدفع', ['only' => ['show' , 'status_update']]);
+        // $this->middleware('permission: تعديل الفاتورة', ['only' => ['edit', 'update']]);
+        // $this->middleware('permission: حذف الفاتورة', ['only' => ['destroy']]);
+        // $this->middleware('permission: ', ['only' => ['getproducts']]);
+        // $this->middleware('permission: الفواتير المدفوعة', ['only' => ['invoice_paid']]);
+        // $this->middleware('permission: الفواتير الغير مدفوعة', ['only' => ['invoice_unpaid']]);
+        // $this->middleware('permission: الفواتير المدفوعة جزئيا', ['only' => ['invoice_partial']]);
+        // $this->middleware('permission: طباعةالفاتورة', ['only' => ['print_invoice']]);
+        // $this->middleware('permission: تصدير EXCEL', ['only' => ['export']]);
+    }
+
+    // __________________________________________________________________________ //
+
     /**
      * Display a listing of the resource.
      *

@@ -8,6 +8,10 @@ use Illuminate\Support\Facades\Auth;
 
 class InvoicesAttachmentsController extends Controller
 {
+    function __construct(){
+        // $this->middleware('permission: اضافة مرفق', ['only' => ['store']]);
+    }
+
     /**
      * Display a listing of the resource.
      *

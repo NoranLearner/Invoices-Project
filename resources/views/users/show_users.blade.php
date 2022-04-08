@@ -40,23 +40,25 @@
 
 <!-- row opened -->
 <div class="row row-sm">
+
     <div class="col-xl-12">
+
         <div class="card">
 
             <div class="card-header pb-0">
-
                 <div class="d-flex justify-content-between">
 
                     <h4 class="card-title col-xl-6">قائمة المستخدمين</h4>
 
-                    <div class="col-sm-1 col-md-2 col-xl-3">
-                        <a class="btn btn-outline-primary btn-block" href="{{ route('users.create') }}">
-                            <i class="fas fa-plus"></i>&nbsp; اضافة مستخدم
-                        </a>
-                    </div>
+                    @can('اضافة مستخدم')
+                        <div class="col-sm-1 col-md-2 col-xl-3">
+                            <a class="btn btn-outline-primary btn-block" href="{{ route('users.create') }}">
+                                <i class="fas fa-plus"></i>&nbsp; اضافة مستخدم
+                            </a>
+                        </div>
+                    @endcan
 
                 </div>
-
             </div>
 
             <div class="card-body">
@@ -79,17 +81,18 @@
                         <tbody>
                             @foreach ($data as $key => $user)
                                 <tr>
-                                    <td>{{ ++$i }}</td>
+                                    {{-- <td>{{ ++$i }}</td> --}}
+                                    <td>{{ $user->id }}</td>
                                     <td>{{ $user->name }}</td>
                                     <td>{{ $user->email }}</td>
                                     <td>
-                                        @if ($user->Status == 'مفعل')
+                                        @if ($user->status == 'مفعل')
                                             <span class="label text-success d-flex">
-                                                <div class="dot-label bg-success ml-1"></div>{{ $user->Status }}
+                                                <div class="dot-label bg-success ml-1"></div>{{ $user->status }}
                                             </span>
                                         @else
                                             <span class="label text-danger d-flex">
-                                                <div class="dot-label bg-danger ml-1"></div>{{ $user->Status }}
+                                                <div class="dot-label bg-danger ml-1"></div>{{ $user->status }}
                                             </span>
                                         @endif
                                     </td>
@@ -104,15 +107,13 @@
 
                                     <td>
                                         @can('تعديل مستخدم')
-                                            <a href="{{ route('users.edit', $user->id) }}" class="btn btn-sm btn-info"
-                                                title="تعديل"><i class="las la-pen"></i></a>
+                                            <a href="{{ route('users.edit', $user->id) }}" class="btn btn-sm btn-info title="تعديل"><i class="las la-pen"></i></a>
                                         @endcan
 
                                         @can('حذف مستخدم')
-                                            <a class="modal-effect btn btn-sm btn-danger" data-effect="effect-scale"
-                                                data-user_id="{{ $user->id }}" data-username="{{ $user->name }}"
-                                                data-toggle="modal" href="#modaldemo8" title="حذف"><i
-                                                    class="las la-trash"></i></a>
+                                            <a class="modal-effect btn btn-sm btn-danger" data-effect="effect-scale" data-user_id="{{ $user->id }}" data-username="{{ $user->name }}" data-toggle="modal" href="#modaldemo8" title="حذف">
+                                                <i class="las la-trash"></i>
+                                            </a>
                                         @endcan
                                     </td>
                                 </tr>
@@ -124,6 +125,7 @@
                 </div>
             </div>
         </div>
+
     </div>
     <!--/div-->
 
@@ -132,8 +134,10 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content modal-content-demo">
                 <div class="modal-header">
-                    <h6 class="modal-title">حذف المستخدم</h6><button aria-label="Close" class="close"
-                        data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span></button>
+                    <h6 class="modal-title">حذف المستخدم</h6>
+                    <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
                 <form action="{{ route('users.destroy', 'test') }}" method="post">
                     {{ method_field('delete') }}
@@ -151,6 +155,7 @@
             </form>
         </div>
     </div>
+
 </div>
 
 </div>
@@ -179,7 +184,7 @@
 <script src="{{ URL::asset('assets/plugins/notify/js/notifit-custom.js') }}"></script>
 <!-- Internal Modal js-->
 <script src="{{ URL::asset('assets/js/modal.js') }}"></script>
-
+<!-- For delete user-->
 <script>
     $('#modaldemo8').on('show.bs.modal', function(event) {
         var button = $(event.relatedTarget)
@@ -189,7 +194,5 @@
         modal.find('.modal-body #user_id').val(user_id);
         modal.find('.modal-body #username').val(username);
     })
-
 </script>
-
 @endsection

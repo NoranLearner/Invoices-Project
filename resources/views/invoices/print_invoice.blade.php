@@ -6,12 +6,10 @@
 
 @section('css')
 <style>
+    .myColor{ color:rgb(15, 143, 185); }
     @media print {
         #print_Button{ display: none; }
     }
-</style>
-<style>
-    .myColor{ color:rgb(15, 143, 185); }
 </style>
 @endsection
 
@@ -165,18 +163,7 @@
                         <button class="btn btn-danger float-left mt-3 mr-2" id="print_Button" onclick="printDiv()">
                             <i class="mdi mdi-printer ml-1"></i>طباعة
                         </button>
-
-                        {{-- <a class="btn btn-purple float-left mt-3 mr-2" href="">
-                            <i class="mdi mdi-currency-usd ml-1"></i>Pay Now
-                        </a>
-
-                        <a href="#" class="btn btn-danger float-left mt-3 mr-2">
-                            <i class="mdi mdi-printer ml-1"></i>Print
-                        </a>
-
-                        <a href="#" class="btn btn-success float-left mt-3">
-                            <i class="mdi mdi-telegram ml-1"></i>Send Invoice
-                        </a> --}}
+                        
                     </div>
 
                 </div>

@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-    لوحة التحكم
+    الصفحة الرئيسية
 @endsection
 
 @section('css')
