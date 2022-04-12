@@ -7,10 +7,11 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\InvoicesController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\SectionsController;
+use App\Http\Controllers\CustomerReportController;
 use App\Http\Controllers\InvoiceArchiveController;
+use App\Http\Controllers\InvoicesReportController;
 use App\Http\Controllers\InvoicesDetailsController;
 use App\Http\Controllers\InvoicesAttachmentsController;
-// spatie package
 use App\Http\Controllers\UserManagement\RoleController;
 use App\Http\Controllers\UserManagement\UserController;
 
@@ -108,5 +109,20 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('users', UserController::class);
 });
 
+// For Invoices Report
+
+Route::resource('invoices_report', InvoicesReportController::class);
+// Route::get('invoices_report', [InvoicesReportController::class, 'index']);
+Route::post('search_invoices', [InvoicesReportController::class, 'search_invoices']);
+Route::get('export_search', [InvoicesReportController::class, 'export']);
+
+// For Customers Report
+
+Route::resource('customers_report', CustomerReportController::class);
+Route::post('search_customers', [CustomerReportController::class, 'search_customers']);
+Route::get('export_search', [CustomerReportController::class, 'export']);
+
+
+// For All Pages
 
 Route::get('/{page}', [AdminController::class, 'index']);
