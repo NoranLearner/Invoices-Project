@@ -30,6 +30,10 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
+Route::get('/register', function () {
+    return view('auth.register');
+});
+
 Auth::routes();
 
 // Auth::routes(['register' => false]);
