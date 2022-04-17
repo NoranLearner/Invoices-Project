@@ -98,7 +98,7 @@
                                             <!-- For Register -->
 
                                             <div class="mg-t-20">
-                                                <a class="btn btn-secondary btn-block text-white" href="http://127.0.0.1:8000/register">إنشاء حساب جديد</a>
+                                                <a class="btn btn-secondary btn-block text-white" href="{{ url('register') }}">إنشاء حساب جديد</a>
                                             </div>
 
 

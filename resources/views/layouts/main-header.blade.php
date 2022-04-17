@@ -1,286 +1,175 @@
 <!-- main-header opened -->
 			<div class="main-header sticky side-header nav nav-item">
 				<div class="container-fluid">
-					<div class="main-header-left ">
-						<div class="responsive-logo">
-							<a href="{{ url('/' . $page='index') }}"><img src="{{URL::asset('assets/img/brand/logo.png')}}" class="logo-1" alt="logo"></a>
-							<a href="{{ url('/' . $page='index') }}"><img src="{{URL::asset('assets/img/brand/logo-white.png')}}" class="dark-logo-1" alt="logo"></a>
-							<a href="{{ url('/' . $page='index') }}"><img src="{{URL::asset('assets/img/brand/favicon.png')}}" class="logo-2" alt="logo"></a>
-							<a href="{{ url('/' . $page='index') }}"><img src="{{URL::asset('assets/img/brand/favicon.png')}}" class="dark-logo-2" alt="logo"></a>
-						</div>
-						<div class="app-sidebar__toggle" data-toggle="sidebar">
-							<a class="open-toggle" href="#"><i class="header-icon fe fe-align-left" ></i></a>
-							<a class="close-toggle" href="#"><i class="header-icons fe fe-x"></i></a>
-						</div>
-						<div class="main-header-center mr-3 d-sm-none d-md-none d-lg-block">
-							<input class="form-control" placeholder="Search for anything..." type="search"> <button class="btn"><i class="fas fa-search d-none d-md-block"></i></button>
-						</div>
-					</div>
-					<div class="main-header-right">
-						<ul class="nav">
-							<li class="">
-								<div class="dropdown  nav-itemd-none d-md-flex">
-									<a href="#" class="d-flex  nav-item nav-link pl-0 country-flag1" data-toggle="dropdown" aria-expanded="false">
-										<span class="avatar country-Flag mr-0 align-self-center bg-transparent"><img src="{{URL::asset('assets/img/flags/us_flag.jpg')}}" alt="img"></span>
-										<div class="my-auto">
-											<strong class="mr-2 ml-2 my-auto">English</strong>
-										</div>
-									</a>
-									<div class="dropdown-menu dropdown-menu-left dropdown-menu-arrow" x-placement="bottom-end">
-										<a href="#" class="dropdown-item d-flex ">
-											<span class="avatar  ml-3 align-self-center bg-transparent"><img src="{{URL::asset('assets/img/flags/french_flag.jpg')}}" alt="img"></span>
-											<div class="d-flex">
-												<span class="mt-2">French</span>
-											</div>
-										</a>
-										<a href="#" class="dropdown-item d-flex">
-											<span class="avatar  ml-3 align-self-center bg-transparent"><img src="{{URL::asset('assets/img/flags/germany_flag.jpg')}}" alt="img"></span>
-											<div class="d-flex">
-												<span class="mt-2">Germany</span>
-											</div>
-										</a>
-										<a href="#" class="dropdown-item d-flex">
-											<span class="avatar ml-3 align-self-center bg-transparent"><img src="{{URL::asset('assets/img/flags/italy_flag.jpg')}}" alt="img"></span>
-											<div class="d-flex">
-												<span class="mt-2">Italy</span>
-											</div>
-										</a>
-										<a href="#" class="dropdown-item d-flex">
-											<span class="avatar ml-3 align-self-center bg-transparent"><img src="{{URL::asset('assets/img/flags/russia_flag.jpg')}}" alt="img"></span>
-											<div class="d-flex">
-												<span class="mt-2">Russia</span>
-											</div>
-										</a>
-										<a href="#" class="dropdown-item d-flex">
-											<span class="avatar  ml-3 align-self-center bg-transparent"><img src="{{URL::asset('assets/img/flags/spain_flag.jpg')}}" alt="img"></span>
-											<div class="d-flex">
-												<span class="mt-2">spain</span>
-											</div>
-										</a>
-									</div>
-								</div>
-							</li>
-						</ul>
-						<div class="nav nav-item  navbar-nav-right ml-auto">
-							<div class="nav-link" id="bs-example-navbar-collapse-1">
-								<form class="navbar-form" role="search">
-									<div class="input-group">
-										<input type="text" class="form-control" placeholder="Search">
-										<span class="input-group-btn">
-											<button type="reset" class="btn btn-default">
-												<i class="fas fa-times"></i>
-											</button>
-											<button type="submit" class="btn btn-default nav-link resp-btn">
-												<svg xmlns="http://www.w3.org/2000/svg" class="header-icon-svgs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-											</button>
-										</span>
-									</div>
-								</form>
+
+                    <!-- ############################################################################################## -->
+
+                    <div class="main-header-left ">
+
+                        {{-- http://127.0.0.1:8000/navigation --}}
+                        {{-- https://icons.getbootstrap.com/ --}}
+
+                        <nav class="nav main-nav flex-column flex-md-row">
+
+                            <a class="nav-link" href="{{ url('/' . $page='home') }}">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M2 13.5V7h1v6.5a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5V7h1v6.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5zm11-11V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"/>
+                                    <path fill-rule="evenodd" d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z"/>
+                                </svg>
+                            </a>
+
+                            <a class="nav-link" href="{{ url('/' . $page='sections') }}">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" fill="currentColor" class="bi bi-bank" viewBox="0 0 16 16">
+                                    <path d="M8 .95 14.61 4h.89a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5H15v7a.5.5 0 0 1 .485.379l.5 2A.5.5 0 0 1 15.5 17H.5a.5.5 0 0 1-.485-.621l.5-2A.5.5 0 0 1 1 14V7H.5a.5.5 0 0 1-.5-.5v-2A.5.5 0 0 1 .5 4h.89L8 .95zM3.776 4h8.447L8 2.05 3.776 4zM2 7v7h1V7H2zm2 0v7h2.5V7H4zm3.5 0v7h1V7h-1zm2 0v7H12V7H9.5zM13 7v7h1V7h-1zm2-1V5H1v1h14zm-.39 9H1.39l-.25 1h13.72l-.25-1z"/>
+                                </svg>
+                            </a>
+
+                            <a class="nav-link" href="{{ url('/' . $page='products') }}">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
+                                    <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                                </svg>
+                            </a>
+
+                            <a class="nav-link" href="{{ url('/' . $page='invoices') }}">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" fill="currentColor" class="bi bi-receipt side-menu__icon" viewBox="0 0 16 16">
+                                    <path d="M1.92.506a.5.5 0 0 1 .434.14L3 1.293l.646-.647a.5.5 0 0 1 .708 0L5 1.293l.646-.647a.5.5 0 0 1 .708 0L7 1.293l.646-.647a.5.5 0 0 1 .708 0L9 1.293l.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .801.13l.5 1A.5.5 0 0 1 15 2v12a.5.5 0 0 1-.053.224l-.5 1a.5.5 0 0 1-.8.13L13 14.707l-.646.647a.5.5 0 0 1-.708 0L11 14.707l-.646.647a.5.5 0 0 1-.708 0L9 14.707l-.646.647a.5.5 0 0 1-.708 0L7 14.707l-.646.647a.5.5 0 0 1-.708 0L5 14.707l-.646.647a.5.5 0 0 1-.708 0L3 14.707l-.646.647a.5.5 0 0 1-.801-.13l-.5-1A.5.5 0 0 1 1 14V2a.5.5 0 0 1 .053-.224l.5-1a.5.5 0 0 1 .367-.27zm.217 1.338L2 2.118v11.764l.137.274.51-.51a.5.5 0 0 1 .707 0l.646.647.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.509.509.137-.274V2.118l-.137-.274-.51.51a.5.5 0 0 1-.707 0L12 1.707l-.646.647a.5.5 0 0 1-.708 0L10 1.707l-.646.647a.5.5 0 0 1-.708 0L8 1.707l-.646.647a.5.5 0 0 1-.708 0L6 1.707l-.646.647a.5.5 0 0 1-.708 0L4 1.707l-.646.647a.5.5 0 0 1-.708 0l-.509-.51z"/>
+                                    <path d="M3 4.5a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5zm8-6a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5z"/>
+                                </svg>
+                            </a>
+
+                            <a class="nav-link" href="{{ url('/' . ($page = 'users')) }}">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" fill="currentColor" class="bi bi-people" viewBox="0 0 16 16">
+                                    <path d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1h8zm-7.978-1A.261.261 0 0 1 7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002a.274.274 0 0 1-.014.002H7.022zM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0zM6.936 9.28a5.88 5.88 0 0 0-1.23-.247A7.35 7.35 0 0 0 5 9c-4 0-5 3-5 4 0 .667.333 1 1 1h4.216A2.238 2.238 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816zM4.92 10A5.493 5.493 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275zM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0zm3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4z"/>
+                                </svg>
+                            </a>
+
+                        </nav>
+
+                    </div>
+
+                    <!-- ############################################################################################## -->
+
+                    <div class="main-header-right">
+
+						<div class="nav nav-item">
+
+                            <!-- ------------------------------------------------------------------------------- -->
+
+                            <!-- Zoom Page -->
+
+                            <div class="nav-item full-screen fullscreen-button">
+								<a class="new nav-link full-screen-link" href="#">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="header-icon-svgs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-maximize">
+                                        <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+                                    </svg>
+                                </a>
 							</div>
-							<div class="dropdown nav-item main-header-message ">
-								<a class="new nav-link" href="#"><svg xmlns="http://www.w3.org/2000/svg" class="header-icon-svgs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-mail"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg><span class=" pulse-danger"></span></a>
-								<div class="dropdown-menu">
-									<div class="menu-header-content bg-primary text-right">
-										<div class="d-flex">
-											<h6 class="dropdown-title mb-1 tx-15 text-white font-weight-semibold">Messages</h6>
-											<span class="badge badge-pill badge-warning mr-auto my-auto float-left">Mark All Read</span>
-										</div>
-										<p class="dropdown-title-text subtext mb-0 text-white op-6 pb-0 tx-12 ">You have 4 unread messages</p>
-									</div>
-									<div class="main-message-list chat-scroll">
-										<a href="#" class="p-3 d-flex border-bottom">
-											<div class="  drop-img  cover-image  " data-image-src="{{URL::asset('assets/img/faces/3.jpg')}}">
-												<span class="avatar-status bg-teal"></span>
-											</div>
-											<div class="wd-90p">
-												<div class="d-flex">
-													<h5 class="mb-1 name">Petey Cruiser</h5>
-												</div>
-												<p class="mb-0 desc">I'm sorry but i'm not sure how to help you with that......</p>
-												<p class="time mb-0 text-left float-right mr-2 mt-2">Mar 15 3:55 PM</p>
-											</div>
-										</a>
-										<a href="#" class="p-3 d-flex border-bottom">
-											<div class="drop-img cover-image" data-image-src="{{URL::asset('assets/img/faces/2.jpg')}}">
-												<span class="avatar-status bg-teal"></span>
-											</div>
-											<div class="wd-90p">
-												<div class="d-flex">
-													<h5 class="mb-1 name">Jimmy Changa</h5>
-												</div>
-												<p class="mb-0 desc">All set ! Now, time to get to you now......</p>
-												<p class="time mb-0 text-left float-right mr-2 mt-2">Mar 06 01:12 AM</p>
-											</div>
-										</a>
-										<a href="#" class="p-3 d-flex border-bottom">
-											<div class="drop-img cover-image" data-image-src="{{URL::asset('assets/img/faces/9.jpg')}}">
-												<span class="avatar-status bg-teal"></span>
-											</div>
-											<div class="wd-90p">
-												<div class="d-flex">
-													<h5 class="mb-1 name">Graham Cracker</h5>
-												</div>
-												<p class="mb-0 desc">Are you ready to pickup your Delivery...</p>
-												<p class="time mb-0 text-left float-right mr-2 mt-2">Feb 25 10:35 AM</p>
-											</div>
-										</a>
-										<a href="#" class="p-3 d-flex border-bottom">
-											<div class="drop-img cover-image" data-image-src="{{URL::asset('assets/img/faces/12.jpg')}}">
-												<span class="avatar-status bg-teal"></span>
-											</div>
-											<div class="wd-90p">
-												<div class="d-flex">
-													<h5 class="mb-1 name">Donatella Nobatti</h5>
-												</div>
-												<p class="mb-0 desc">Here are some products ...</p>
-												<p class="time mb-0 text-left float-right mr-2 mt-2">Feb 12 05:12 PM</p>
-											</div>
-										</a>
-										<a href="#" class="p-3 d-flex border-bottom">
-											<div class="drop-img cover-image" data-image-src="{{URL::asset('assets/img/faces/5.jpg')}}">
-												<span class="avatar-status bg-teal"></span>
-											</div>
-											<div class="wd-90p">
-												<div class="d-flex">
-													<h5 class="mb-1 name">Anne Fibbiyon</h5>
-												</div>
-												<p class="mb-0 desc">I'm sorry but i'm not sure how...</p>
-												<p class="time mb-0 text-left float-right mr-2 mt-2">Jan 29 03:16 PM</p>
-											</div>
-										</a>
-									</div>
-									<div class="text-center dropdown-footer">
-										<a href="text-center">VIEW ALL</a>
-									</div>
-								</div>
-							</div>
+
+                            <!-- ------------------------------------------------------------------------------- -->
+
+                            <!-- For Add Invoice Notification -->
+
+                            @can('الاشعارات')
+                            {{-- @if (Auth::user()->roles_name == ["owner"]) --}}
+                            <!-- Start Add Invoice Notification -->
 							<div class="dropdown nav-item main-header-notification">
 								<a class="new nav-link" href="#">
-								<svg xmlns="http://www.w3.org/2000/svg" class="header-icon-svgs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bell"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg><span class=" pulse"></span></a>
-								<div class="dropdown-menu">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="header-icon-svgs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bell">
+                                        <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                                        <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+                                    </svg>
+                                    <span class="pulse"></span>
+                                </a>
+								<div class="dropdown-menu" style="min-width: 345px;">
 									<div class="menu-header-content bg-primary text-right">
 										<div class="d-flex">
-											<h6 class="dropdown-title mb-1 tx-15 text-white font-weight-semibold">Notifications</h6>
-											<span class="badge badge-pill badge-warning mr-auto my-auto float-left">Mark All Read</span>
+											<h6 class="dropdown-title mb-1 text-white font-weight-semibold">الاشعارات</h6>
+											<span class="badge badge-pill badge-warning mr-auto my-auto float-left">
+                                                <a href="{{ url('MarkAsRead_all') }}">تعين قراءة الكل</a>
+                                            </span>
 										</div>
-										<p class="dropdown-title-text subtext mb-0 text-white op-6 pb-0 tx-12 ">You have 4 unread Notifications</p>
+										<p class="dropdown-title-text subtext mb-0 text-white op-6 pb-0 tx-14">
+                                            عدد الاشعارات غير المقروءة :
+                                            <span id="notifications_count">
+                                                {{ auth()->user()->unreadNotifications->count() }}
+                                            </span>
+                                        </p>
 									</div>
-									<div class="main-notification-list Notification-scroll">
-										<a class="d-flex p-3 border-bottom" href="#">
-											<div class="notifyimg bg-pink">
-												<i class="la la-file-alt text-white"></i>
-											</div>
-											<div class="mr-3">
-												<h5 class="notification-label mb-1">New files available</h5>
-												<div class="notification-subtext">10 hour ago</div>
-											</div>
-											<div class="mr-auto" >
-												<i class="las la-angle-left text-left text-muted"></i>
-											</div>
-										</a>
-										<a class="d-flex p-3" href="#">
-											<div class="notifyimg bg-purple">
-												<i class="la la-gem text-white"></i>
-											</div>
-											<div class="mr-3">
-												<h5 class="notification-label mb-1">Updates Available</h5>
-												<div class="notification-subtext">2 days ago</div>
-											</div>
-											<div class="mr-auto" >
-												<i class="las la-angle-left text-left text-muted"></i>
-											</div>
-										</a>
-										<a class="d-flex p-3 border-bottom" href="#">
-											<div class="notifyimg bg-success">
-												<i class="la la-shopping-basket text-white"></i>
-											</div>
-											<div class="mr-3">
-												<h5 class="notification-label mb-1">New Order Received</h5>
-												<div class="notification-subtext">1 hour ago</div>
-											</div>
-											<div class="mr-auto" >
-												<i class="las la-angle-left text-left text-muted"></i>
-											</div>
-										</a>
-										<a class="d-flex p-3 border-bottom" href="#">
-											<div class="notifyimg bg-warning">
-												<i class="la la-envelope-open text-white"></i>
-											</div>
-											<div class="mr-3">
-												<h5 class="notification-label mb-1">New review received</h5>
-												<div class="notification-subtext">1 day ago</div>
-											</div>
-											<div class="mr-auto" >
-												<i class="las la-angle-left text-left text-muted"></i>
-											</div>
-										</a>
-										<a class="d-flex p-3 border-bottom" href="#">
-											<div class="notifyimg bg-danger">
-												<i class="la la-user-check text-white"></i>
-											</div>
-											<div class="mr-3">
-												<h5 class="notification-label mb-1">22 verified registrations</h5>
-												<div class="notification-subtext">2 hour ago</div>
-											</div>
-											<div class="mr-auto" >
-												<i class="las la-angle-left text-left text-muted"></i>
-											</div>
-										</a>
-										<a class="d-flex p-3 border-bottom" href="#">
-											<div class="notifyimg bg-primary">
-												<i class="la la-check-circle text-white"></i>
-											</div>
-											<div class="mr-3">
-												<h5 class="notification-label mb-1">Project has been approved</h5>
-												<div class="notification-subtext">4 hour ago</div>
-											</div>
-											<div class="mr-auto" >
-												<i class="las la-angle-left text-left text-muted"></i>
-											</div>
-										</a>
-									</div>
-									<div class="dropdown-footer">
-										<a href="">VIEW ALL</a>
-									</div>
+                                    <div id="unreadNotifications">
+                                        @foreach (auth()->user()->unreadNotifications as $notification)
+
+                                            <div class="main-notification-list Notification-scroll">
+                                                <a class="d-flex p-2 border-bottom" href="{{ url('InvoicesDetails') }}/{{ $notification->data['id'] }}">
+                                                    <div class="notifyimg bg-primary">
+                                                        {{-- https://icons8.com/line-awesome --}}
+                                                        <i class="lar la-bell text-white"></i>
+                                                    </div>
+                                                    <div class="mr-2">
+                                                        <h5 class="notification-label mb-2">
+                                                            {{ $notification->data['title'] }}
+                                                            {{ $notification->data['user'] }}
+                                                        </h5>
+                                                        <div class="notification-subtext">
+                                                            {{ $notification->created_at }}
+                                                        </div>
+                                                    </div>
+                                                    <div class="mr-auto" >
+                                                        <i class="las la-angle-left text-left text-muted"></i>
+                                                    </div>
+                                                </a>
+                                            </div>
+
+                                        @endforeach
+                                    </div>
 								</div>
 							</div>
-							<div class="nav-item full-screen fullscreen-button">
-								<a class="new nav-link full-screen-link" href="#"><svg xmlns="http://www.w3.org/2000/svg" class="header-icon-svgs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-maximize"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path></svg></a>
-							</div>
-							<div class="dropdown main-profile-menu nav nav-item nav-link">
-								<a class="profile-user d-flex" href=""><img alt="" src="{{URL::asset('assets/img/faces/6.jpg')}}"></a>
-								<div class="dropdown-menu">
+                            <!-- End Add Invoice Notification-->
+                            {{-- @endif --}}
+                            @endcan
+
+                            <!-- ------------------------------------------------------------------------------- -->
+
+                            <!-- User Dropdown Menu-->
+
+                            <div class="dropdown main-profile-menu nav nav-item nav-link">
+								<a class="profile-user d-flex" href="">
+                                    <img src="{{URL::asset('assets/img/faces/6.jpg')}}">
+                                </a>
+								<div class="dropdown-menu" style="min-width: 300px;">
 									<div class="main-header-profile bg-primary p-3">
 										<div class="d-flex wd-100p">
-											<div class="main-img-user"><img alt="" src="{{URL::asset('assets/img/faces/6.jpg')}}" class=""></div>
+											<div class="main-img-user">
+                                                <img alt="" src="{{URL::asset('assets/img/faces/6.jpg')}}" class="">
+                                            </div>
 											<div class="mr-3 my-auto">
 												<h6>{{ Auth::user() -> name }}</h6>
                                                 <span>{{ Auth::user() -> email }}</span>
 											</div>
 										</div>
 									</div>
-									<a class="dropdown-item" href=""><i class="bx bx-user-circle"></i>Profile</a>
-									<a class="dropdown-item" href=""><i class="bx bx-cog"></i> Edit Profile</a>
-									<a class="dropdown-item" href=""><i class="bx bxs-inbox"></i>Inbox</a>
-									<a class="dropdown-item" href=""><i class="bx bx-envelope"></i>Messages</a>
-									<a class="dropdown-item" href=""><i class="bx bx-slider-alt"></i> Account Settings</a>
-									{{-- <a class="dropdown-item" href="{{ url('/' . $page='page-signin') }}"><i class="bx bx-log-out"></i> Sign Out</a> --}}
+									<a class="dropdown-item" href="">
+                                        <i class="bx bx-user-circle"></i> الصفحة الشخصية
+                                    </a>
+									<a class="dropdown-item" href="/users/{{Auth::user()->id}}/edit">
+                                        <i class="bx bx-slider-alt"></i> إعدادات الحساب
+                                    </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
-                                        <i class="bx bx-log-out"></i>
-                                        تسجيل خروج
+                                        <i class="bx bx-log-out"></i> تسجيل خروج
                                     </a>
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>
 								</div>
 							</div>
-							<div class="dropdown main-header-message right-toggle">
-								<a class="nav-link pr-0" data-toggle="sidebar-left" data-target=".sidebar-left">
-									<svg xmlns="http://www.w3.org/2000/svg" class="header-icon-svgs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
-								</a>
-							</div>
-						</div>
-					</div>
+
+                            <!-- ------------------------------------------------------------------------------- -->
+
+                        </div>
+
+                    </div>
+
+                    <!-- ############################################################################################## -->
+
 				</div>
 			</div>
 <!-- /main-header -->

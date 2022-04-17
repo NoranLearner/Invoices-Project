@@ -126,6 +126,9 @@ Route::resource('customers_report', CustomerReportController::class);
 Route::post('search_customers', [CustomerReportController::class, 'search_customers']);
 Route::get('export_search', [CustomerReportController::class, 'export']);
 
+// For Mark All As Read - Add Invoice Notification
+
+Route::get('MarkAsRead_all', [InvoicesController::class, 'MarkAsRead_all']);
 
 // For All Pages
 

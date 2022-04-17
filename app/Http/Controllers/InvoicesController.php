@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\DB;
 use App\Models\invoices_attachments;
 use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
+use App\Notifications\AddInvoiceNotify;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Notification;
 
@@ -89,6 +90,8 @@ class InvoicesController extends Controller
             'note' => $request->note,
         ]);
 
+        // ------------------------------------------
+
         // Add Invoices Details Table
 
         $invoice_id = invoices::latest()->first()->id;
@@ -103,6 +106,8 @@ class InvoicesController extends Controller
             'note' => $request->note,
             'user' => (Auth::user()->name),
         ]);
+
+        // ------------------------------------------
 
         // For Invoices Attachments
         if ($request->hasFile('pic')) {
@@ -127,12 +132,41 @@ class InvoicesController extends Controller
             $request->pic->move(public_path('Attachments/' . $invoice_number), $imageName);
         }
 
+        // ------------------------------------------
+
+        /*
         // Notification - For send mail - https://laravel.com/docs/8.x/notifications#mail-notifications
         $user = User::first();
         // First Method
         // $user->notify(new AddInvoice($invoice_id));
         // Second Method
         Notification::send($user, new AddInvoice($invoice_id));
+        */
+
+        // ------------------------------------------
+
+        // Notification - For Add Invoice
+
+        /*
+        $user = User::find(1);
+        $details = [
+            'greeting' => 'Hi',
+            'body' => 'There is our example notification',
+            'thanks' => 'Thank you',
+        ];
+        $user-> notify(new AddInvoiceNotify($details));
+        */
+
+        // Notify all users
+        // $user = User::get();
+        // Notify user add invoice only
+        // $user = User::find(Auth::user()->id);
+        // Notify admin & owner only , use if , OR use can
+        $user = User::get();
+        $invoices = invoices::latest()->first();
+        Notification::send($user, new AddInvoiceNotify($invoices));
+
+        // ------------------------------------------
 
         // Alert
         session()->flash('Add', 'تم اضافة الفاتورة بنجاح');
@@ -367,6 +401,22 @@ public function export()
     }
 
 // __________________________________________________________________________ //
+
+// For Mark All As Read - Add Invoice Notification
+
+public function MarkAsRead_all(Request $request){
+
+    $userUnreadNotification= auth()->user()->unreadNotifications;
+
+    if($userUnreadNotification) {
+        $userUnreadNotification->markAsRead();
+        return back();
+    }
+
+}
+
+// __________________________________________________________________________ //
+
 }
 
 
